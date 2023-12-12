@@ -1,39 +1,41 @@
-import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Root, { loader as rootLoader } from "./routes/root";
-import NewNote, { action as newNoteAction } from "./routes/new";
-import Note, {
-  loader as noteLoader,
-  action as noteAction,
-} from "./routes/note";
+import Root from "./routes/root";
+import Posts, { postsLoader } from "./routes/posts";
+import NewPost from "./routes/new-post";
+import ShowPost, { postLoader } from "./routes/show-post";
+import EditPost from "./routes/edit-post";
 
 let router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    loader: rootLoader,
-    children: [
-      {
-        path: "new",
-        element: <NewNote />,
-        action: newNoteAction,
-      },
-      {
-        path: "note/:noteId",
-        element: <Note />,
-        loader: noteLoader,
-        action: noteAction,
-        errorElement: <h2>Note not found</h2>,
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <Root />,
+	},
+	{
+		path: "/posts",
+		element: <Posts />,
+		loader: postsLoader,
+	},
+	{
+		path: "/posts/new",
+		element: <NewPost />,
+	},
+	{
+		path: "posts/:postId",
+		element: <ShowPost />,
+		loader: postLoader,
+	},
+	{
+		path: "posts/:postId/edit",
+		element: <EditPost />,
+		loader: postLoader,
+	},
 ]);
 
 if (import.meta.hot) {
-  import.meta.hot.dispose(() => router.dispose());
+	import.meta.hot.dispose(() => router.dispose());
 }
 
 export default function App() {
-  return <RouterProvider router={router} />;
+	return <RouterProvider router={router} />;
 }

@@ -18,7 +18,7 @@ export default function Posts() {
 						<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
 							Posts
 						</h2>
-						<div className="mt-4 border-t border-gray-200 pt-10 sm:mt-6 sm:pt-16">
+						<div className="mt-4 border-gray-200 pt-10 sm:mt-6 sm:pt-16">
 							{posts.map((post) => (
 								<article
 									key={post.id}
@@ -36,7 +36,7 @@ export default function Posts() {
 									</div>
 									<div className="ml-4 flex-shrink-0">
 										<Link
-											className="hover:text-indigo-600"
+											className="rounded bg-indigo-50 px-2 py-1 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
 											to={`/posts/${post.id}/edit`}
 										>
 											Edit

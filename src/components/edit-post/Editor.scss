@@ -1,0 +1,45 @@
+// https://github.com/WordPress/gutenberg/blob/1370534794c02317dd729c498f38c89645a2d44a/packages/edit-post/src/style.scss#L59
+
+// https://github.com/WordPress/gutenberg/blob/4844fe96a41ba29d56ad17673203cef0f1ed7b0e/packages/base-styles/_breakpoints.scss#L11
+$break-medium: 782px;	// adminbar goes big
+$break-small: 600px;
+
+// https://github.com/WordPress/gutenberg/blob/d9ea8d072626f5ad1e5d50ab4207590cfa170b4a/packages/base-styles/_variables.scss#L56
+$admin-bar-height: 32px;
+$admin-bar-height-big: 46px;
+
+// https://github.com/WordPress/gutenberg/blob/4844fe96a41ba29d56ad17673203cef0f1ed7b0e/packages/base-styles/_mixins.scss#L38
+@mixin break-medium() {
+	@media (min-width: #{ ($break-medium) }) {
+		@content;
+	}
+}
+
+@mixin break-small() {
+	@media (min-width: #{ ($break-small) }) {
+		@content;
+	}
+}
+
+.block-editor__container {
+	// On mobile the main content area has to scroll, otherwise you can invoke
+	// the overscroll bounce on the non-scrolling container, for a bad experience.
+	@include break-small {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		min-height: calc(100vh - #{$admin-bar-height-big});
+	}
+
+	// The WP header height changes at this breakpoint.
+	@include break-medium {
+		min-height: 100vh;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}

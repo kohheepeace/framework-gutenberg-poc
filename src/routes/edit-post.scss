@@ -1,0 +1,22 @@
+/**
+ * Gutenberg Components
+ */
+ @import "@wordpress/components/build-style/style.css";
+
+ /**
+   * Gutenberg Block Editor: https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/style.scss
+   */
+ @import "@wordpress/block-editor/build-style/style.css";
+ @import "@wordpress/block-editor/build-style/content.css";
+ 
+ /**
+   * Gutenberg Format library: https://github.com/WordPress/gutenberg/blob/trunk/packages/format-library/src/style.scss
+   */
+ @import "@wordpress/format-library/build-style/style.css";
+ 
+ /**
+   * Gutenberg Core Blocks Styles
+   */
+ @import "@wordpress/block-library/build-style/style.css"; // それぞれのブロックのeditor, frontend両方に適用されるcss
+ @import "@wordpress/block-library/build-style/editor.css"; // それぞれのブロックのeditorに適用されるcss
+ @import "@wordpress/block-library/build-style/theme.css";

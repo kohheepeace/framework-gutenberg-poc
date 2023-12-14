@@ -19,7 +19,7 @@ export default function NewPost() {
 			content,
 		});
 
-		redirect(`/posts/${newPost.id}`);
+		return redirect(`/posts/${newPost.id}`);
 
 		// Clear form after submission
 		// setTitle("");

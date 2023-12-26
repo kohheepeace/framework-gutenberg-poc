@@ -9,7 +9,8 @@ import EditPost from "./routes/edit-post";
 let router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Root />,
+		element: <Posts />,
+		loader: postsLoader,
 	},
 	{
 		path: "/posts",

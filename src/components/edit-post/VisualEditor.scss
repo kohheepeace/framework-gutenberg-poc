@@ -1,5 +1,9 @@
 // https://github.com/WordPress/gutenberg/blob/trunk/packages/edit-post/src/components/visual-editor/style.scss
 
+@import '@wordpress/base-styles/variables';
+@import '@wordpress/base-styles/mixins';
+@import '@wordpress/base-styles/breakpoints';
+
 .edit-post-visual-editor {
 	position: relative;
 	display: flex;
@@ -13,7 +17,7 @@
 	// Gray preview overlay (desktop/tablet/mobile) is intentionally not set on an element with scrolling content like
 	// interface-interface-skeleton__content. This causes graphical glitches (flashes of the background color)
 	// when scrolling in Safari due to incorrect ordering of large compositing layers (GPU acceleration).
-	background-color: $gray-900;
+	background-color: #fff;
 
 	// The button element easily inherits styles that are meant for the editor style.
 	// These rules enhance the specificity to reduce that inheritance.

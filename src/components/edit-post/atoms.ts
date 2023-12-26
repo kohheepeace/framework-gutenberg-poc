@@ -12,5 +12,8 @@ isInserterOpenedAtom.debugLabel = "isInserterOpenedAtom";
 export const isInspectorOpenedAtom = atom(false);
 isInspectorOpenedAtom.debugLabel = "isInspectorOpenedAtom";
 
-export const editorModeAtom = atom("text");
+export const editorModeAtom = atom("visual");
 editorModeAtom.debugLabel = "editorModeAtom";
+
+export const postAtom = atom(null);
+postAtom.debugLabel = "postAtom";

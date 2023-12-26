@@ -1,4 +1,10 @@
+@use 'sass:math';
+@import '@wordpress/base-styles/variables';
+@import '@wordpress/base-styles/mixins';
+@import '@wordpress/base-styles/breakpoints';
+
 // https://github.com/WordPress/gutenberg/blob/1370534794c02317dd729c498f38c89645a2d44a/packages/edit-post/src/style.scss#L59
+
 
 // https://github.com/WordPress/gutenberg/blob/4844fe96a41ba29d56ad17673203cef0f1ed7b0e/packages/base-styles/_breakpoints.scss#L11
 $break-medium: 782px;	// adminbar goes big
@@ -41,5 +47,34 @@ $admin-bar-height-big: 46px;
 	img {
 		max-width: 100%;
 		height: auto;
+	}
+
+	.edit-post-layout {
+    position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+
+		background-color: #eee;
+
+		display: flex;
+    flex: 0 1 100%;
+    flex-direction: column;
+    overflow: hidden;
+
+		
+		/*=============================================
+		=            edit-post-body            =
+		=============================================*/
+		
+		// equal to .interface-interface-skeleton__body: https://github.com/WordPress/gutenberg/blob/cdeca67b63635cca295ba8f4874130c53f394ab0/packages/interface/src/components/interface-skeleton/style.scss#L45
+		.edit-post-body {
+			display: flex;
+			flex-grow: 1;
+			overflow: auto;
+			overscroll-behavior-y: none;
+		}
+		/*=====  End of edit-post-body  ======*/
 	}
 }

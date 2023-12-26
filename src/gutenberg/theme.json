@@ -1,0 +1,76 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "840px",
+			"wideSize": "1100px"
+		},
+		"color": {
+			"palette": [
+				{
+					"slug": "primary",
+					"color": "#7c027c",
+					"name": "Purple"
+				},
+				{
+					"slug": "secondary",
+					"color": "#420142",
+					"name": "Dark purple"
+				}
+			]
+		},
+		"typography": {
+			"dropCap": false,
+			"fluid": true,
+			"fontSizes": [
+				{
+					"fluid": {
+						"min": "0.875rem",
+						"max": "1rem"
+					},
+					"size": "1rem",
+					"slug": "small"
+				},
+				{
+					"fluid": {
+						"min": "1rem",
+						"max": "1.125rem"
+					},
+					"size": "1.125rem",
+					"slug": "medium"
+				},
+				{
+					"fluid": {
+						"min": "1.75rem",
+						"max": "1.875rem"
+					},
+					"size": "1.75rem",
+					"slug": "large"
+				},
+				{
+					"fluid": false,
+					"size": "2.25rem",
+					"slug": "x-large"
+				},
+				{
+					"fluid": {
+						"min": "4rem",
+						"max": "10rem"
+					},
+					"size": "10rem",
+					"slug": "xx-large"
+				}
+			]
+		}
+	},
+	"customTemplates": [
+		{
+			"name": "custom-template",
+			"title": "Custom",
+			"postTypes": ["post"]
+		}
+	],
+	"patterns": ["short-text-surrounded-by-round-images", "partner-logos"]
+}

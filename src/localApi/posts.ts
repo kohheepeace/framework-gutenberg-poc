@@ -2,31 +2,56 @@ import localforage from "localforage";
 import { Post } from "../types/posts";
 
 export async function getPosts(): Promise<Post[]> {
-	let posts = await localforage.getItem<Post[]>("posts");
-	if (!posts) posts = [];
+	const response = await fetch("http://localhost:3001/posts");
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+	const posts = await response.json();
 	return posts;
 }
 
-export async function createPost({
-	title,
-	content,
-	postType = "post",
-}: Partial<Post>): Promise<Post> {
-	let id = Math.random().toString(36).substring(2, 9);
-	let post: Post = { id, title, content, postType };
-	let posts = await getPosts();
-	posts.unshift(post);
-	await set(posts);
-	return post;
+export async function createPost(post: Post): Promise<Response> {
+	const response = await fetch("http://localhost:3001/posts", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(post),
+	});
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+
+	const newPost = await response.json();
+
+	return newPost;
 }
 
 export async function getPost(id: string): Promise<Post | null> {
-	let posts = await localforage.getItem<Post[]>("posts");
-	if (posts) {
-		let post = posts.find((post) => post.id === id);
-		return post ?? null;
+	const response = await fetch(`http://localhost:3001/posts/${id}`);
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
 	}
-	return null;
+	const post = await response.json();
+	return post;
+}
+
+export async function updatePost(id: string, updatedPost: Post): Promise<any> {
+	const response = await fetch(`http://localhost:3001/posts/${id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(updatedPost),
+	});
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+
+	const post = await response.json();
+	return post;
 }
 
 export async function deletePost(id: string): Promise<boolean> {

@@ -30,7 +30,7 @@ export default function Posts() {
 												className="truncate font-medium hover:text-indigo-600"
 												to={`/posts/${post.id}`}
 											>
-												{post.title}
+												{`Post Title: ${post.title}, Post id: ${post.id}`}
 											</Link>
 										</div>
 									</div>
